@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.gonzalo.valenbisi.Fragments.StationsFragment">
+    tools:context="com.gonzalo.valenbisi.fragments.StationsFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcViewStations"

@@ -1,4 +1,4 @@
-package com.gonzalo.valenbisi.Models
+package com.gonzalo.valenbisi.models
 
 
 data class Station(val name: String, val address: String, val slots: Int, val emptySlots: Int,

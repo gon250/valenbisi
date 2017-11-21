@@ -1,4 +1,4 @@
-package com.gonzalo.valenbisi.POJORetrofit
+package com.gonzalo.valenbisi.pojo
 
 data class License(
 	val name: String? = null,

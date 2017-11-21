@@ -1,4 +1,4 @@
-package com.gonzalo.valenbisi.POJORetrofit
+package com.gonzalo.valenbisi.pojo
 
 data class Extra(
 	val uid: Int? = null,

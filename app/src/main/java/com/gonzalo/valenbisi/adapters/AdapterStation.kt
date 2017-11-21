@@ -3,7 +3,7 @@ package com.gonzalo.valenbisi.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.gonzalo.valenbisi.Models.Station
+import com.gonzalo.valenbisi.models.Station
 import com.gonzalo.valenbisi.R
 import com.gonzalo.valenbisi.helpers.inflate
 import kotlinx.android.synthetic.main.item_station.view.*
@@ -29,6 +29,10 @@ class AdapterStation(val data: List<Station?>?) : RecyclerView.Adapter<AdapterSt
             station.let {
                 with(it) {
                     itemView.txtStationName.text = it?.name
+                    itemView.txtStationBikes.text = it?.freeBikes.toString()
+                    itemView.txtStationSlots.text = it?.slots.toString()
+                    itemView.txtStationDate.text = it?.lastUpdate.toString()
+                    itemView.txtStationDistance.text = "0.00 m" //TODO: Calculate Distance
                 }
             }
         }

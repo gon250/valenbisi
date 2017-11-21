@@ -5,9 +5,9 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import com.gonzalo.valenbisi.Fragments.FavoritesFragment
-import com.gonzalo.valenbisi.Fragments.MapFragment
-import com.gonzalo.valenbisi.Fragments.StationsFragment
+import com.gonzalo.valenbisi.fragments.FavoritesFragment
+import com.gonzalo.valenbisi.fragments.MapFragment
+import com.gonzalo.valenbisi.fragments.StationsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

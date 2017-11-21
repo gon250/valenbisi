@@ -1,4 +1,4 @@
-package com.gonzalo.valenbisi.Fragments
+package com.gonzalo.valenbisi.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,12 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gonzalo.valenbisi.Models.Station
-import com.gonzalo.valenbisi.POJORetrofit.ResponseStations
-import com.gonzalo.valenbisi.POJORetrofit.StationsItem
+import com.gonzalo.valenbisi.models.Station
+import com.gonzalo.valenbisi.pojo.ResponseStations
+import com.gonzalo.valenbisi.pojo.StationsItem
 
 import com.gonzalo.valenbisi.R
-import com.gonzalo.valenbisi.Services.StationService
+import com.gonzalo.valenbisi.services.StationService
 import com.gonzalo.valenbisi.adapters.AdapterStation
 import kotlinx.android.synthetic.main.fragment_stations.*
 import retrofit2.Call
@@ -72,8 +72,8 @@ class StationsFragment : Fragment() {
                         it.name ?: "",
                         it.extra?.address ?: "",
                         it.extra?.slots ?: 0,
-                        it.emptySlots ?: 0,
-                        it.freeBikes ?: 0,
+                        it.empty_slots ?: 0,
+                        it.free_bikes ?: 0,
                         it.extra?.status ?: "",
                         0.00,
                         it.extra?.lastUpdate ?: 0

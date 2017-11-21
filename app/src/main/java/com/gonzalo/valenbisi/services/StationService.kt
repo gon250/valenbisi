@@ -1,6 +1,6 @@
-package com.gonzalo.valenbisi.Services
+package com.gonzalo.valenbisi.services
 
-import com.gonzalo.valenbisi.POJORetrofit.ResponseStations
+import com.gonzalo.valenbisi.pojo.ResponseStations
 import retrofit2.Call
 import retrofit2.http.GET
 

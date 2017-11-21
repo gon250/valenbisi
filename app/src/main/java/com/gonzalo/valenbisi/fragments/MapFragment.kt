@@ -1,4 +1,4 @@
-package com.gonzalo.valenbisi.Fragments
+package com.gonzalo.valenbisi.fragments
 
 
 import android.os.Bundle
