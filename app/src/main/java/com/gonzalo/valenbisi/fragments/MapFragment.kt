@@ -17,7 +17,7 @@ class MapFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        activity.title = getString(R.string.title_home)
+        activity.title = getString(R.string.title_map)
         val view = inflater?.inflate(R.layout.fragment_map, container, false)
         return view
     }

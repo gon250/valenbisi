@@ -18,7 +18,7 @@ class FavoritesFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        activity.title = getString(R.string.title_home)
+        activity.title = getString(R.string.title_favorite)
         val view = inflater?.inflate(R.layout.fragment_favorites, container, false)
         return view
     }
