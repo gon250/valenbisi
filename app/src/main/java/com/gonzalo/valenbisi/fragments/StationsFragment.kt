@@ -69,6 +69,7 @@ class StationsFragment : Fragment() {
         val items = stations?.map {
             it?.let {
                 Station(
+                        it.id ?: "",
                         it.name ?: "",
                         it.extra?.address ?: "",
                         it.extra?.slots ?: 0,
@@ -80,9 +81,7 @@ class StationsFragment : Fragment() {
                 )
             }
         }
-
         rcViewStations.adapter = AdapterStation(items)
-
     }
 
 }

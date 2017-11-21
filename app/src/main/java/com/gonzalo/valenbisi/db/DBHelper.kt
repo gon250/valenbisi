@@ -24,7 +24,7 @@ class DBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Valenbisi", null, 1
         val id = "id" to INTEGER + PRIMARY_KEY
         val stationId = "stationId" to TEXT
         val name = "name" to TEXT
-        val status = "" to REAL
+        val status = "status" to REAL
         db?.createTable(stationDb, true, id, stationId, name, status)
     }
 
