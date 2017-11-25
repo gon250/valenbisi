@@ -37,6 +37,7 @@ class AdapterStation(val data: List<Station?>?) : RecyclerView.Adapter<AdapterSt
                     itemView.txtStationDate.text = it?.lastUpdate.toString()
                     itemView.txtStationDistance.text = "0.00 m" //TODO: Calculate Distance
 
+                    /*
                     db.use {
                         select("BookMark", "active")
                                 .whereArgs(("stationId" to stationId).toString())
@@ -50,6 +51,7 @@ class AdapterStation(val data: List<Station?>?) : RecyclerView.Adapter<AdapterSt
                             //TODO: Update Row
                         }
                     }
+                    */
                 }
             }
         }

@@ -2,7 +2,7 @@ package com.gonzalo.valenbisi.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.util.Log
+import com.gonzalo.valenbisi.db.models.BookMark
 import com.gonzalo.valenbisi.pojo.ResponseStations
 import com.gonzalo.valenbisi.services.StationService
 import org.jetbrains.anko.db.*
@@ -17,6 +17,7 @@ class DBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "ValenbisiDB", null,
     companion object {
         private var instance: DBHelper? = null
 
+        @Synchronized
         fun getInstance(ctx: Context): DBHelper {
             if (instance == null) {
                 instance = DBHelper(ctx.getApplicationContext())
@@ -26,17 +27,18 @@ class DBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "ValenbisiDB", null,
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.createTable("BookMark", true,
-                "id" to INTEGER + PRIMARY_KEY + AUTOINCREMENT + UNIQUE,
-                "stationId" to TEXT,
-                "name" to TEXT,
-                "active" to INTEGER)
+        db?.createTable(BookMark.TABLE_NAME, true,
+                BookMark.COLUMN_ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT + UNIQUE,
+                BookMark.COLUMN_STATION_ID to TEXT,
+                BookMark.COLUMN_NAME to TEXT,
+                BookMark.COLUMN_ACTIVE to INTEGER)
+        //Adding bookmarks.
         initBookMarks(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, old: Int, newV: Int) {
         //TODO: Upgrade tables, as usual
-        db?.dropTable("BookMark", true)
+        db?.dropTable(BookMark.TABLE_NAME, true)
     }
 
     val Context.database: DBHelper?
@@ -58,10 +60,10 @@ class DBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "ValenbisiDB", null,
                 if (response?.code() == 200) {
                     response.body()?.network?.stations?.forEach {
                         with(it) {
-                            db?.insert("BookMark",
-                                    "stationId" to it?.id,
-                                    "name" to it?.name,
-                                    "active" to 0
+                            db?.insert(BookMark.TABLE_NAME,
+                                    BookMark.COLUMN_STATION_ID to it?.id,
+                                    BookMark.COLUMN_NAME to it?.name,
+                                    BookMark.COLUMN_ACTIVE to 0
                             )
                         }
                     }

@@ -70,7 +70,7 @@ class StationsFragment : Fragment() {
             it?.let {
                 Station(
                         it.id ?: "",
-                        it.name ?: "",
+                         it.name?.replace("_", " ") ?: "",
                         it.extra?.address ?: "",
                         it.extra?.slots ?: 0,
                         it.empty_slots ?: 0,
