@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import com.gonzalo.valenbisi.models.Station
 import com.gonzalo.valenbisi.R
 import com.gonzalo.valenbisi.db.DBHelper
+import com.gonzalo.valenbisi.db.models.BookMark
 import com.gonzalo.valenbisi.helpers.inflate
 import kotlinx.android.synthetic.main.item_station.view.*
-import org.jetbrains.anko.db.select
+import org.jetbrains.anko.db.*
+import org.jetbrains.anko.image
 
 class AdapterStation(val data: List<Station?>?) : RecyclerView.Adapter<AdapterStation.Holder>() {
 
@@ -31,28 +33,40 @@ class AdapterStation(val data: List<Station?>?) : RecyclerView.Adapter<AdapterSt
             station.let {
                 with(it) {
                     val stationId = it?.stationId
+                    val currentBookMark = getCurrentBookMark(db, stationId)
+
                     itemView.txtStationName.text = it?.name
                     itemView.txtStationBikes.text = it?.freeBikes.toString()
                     itemView.txtStationSlots.text = it?.slots.toString()
                     itemView.txtStationDate.text = it?.lastUpdate.toString()
                     itemView.txtStationDistance.text = "0.00 m" //TODO: Calculate Distance
-
-                    /*
-                    db.use {
-                        select("BookMark", "active")
-                                .whereArgs(("stationId" to stationId).toString())
-                                .exec {
-                                    //TODO: Set a proper fav icon depending on the active value.
-                                }
-                    }
+                    setFavIcon(currentBookMark.active)
 
                     itemView.favBtn.setOnClickListener {
+                        val updatetBookMark = getCurrentBookMark(db, stationId)
                         db.use {
-                            //TODO: Update Row
+                            update(BookMark.TABLE_NAME, BookMark.COLUMN_ACTIVE to if (updatetBookMark.active == 0) 1 else 0)
+                                    .whereArgs("stationId = {stationId}", "stationId" to stationId.toString())
+                                    .exec()
                         }
+                        setFavIcon(if (updatetBookMark.active == 0) 1 else 0)
                     }
-                    */
                 }
+            }
+        }
+
+        private fun getCurrentBookMark(db: DBHelper, stationId: String?): BookMark {
+            return db.use {
+                select(BookMark.TABLE_NAME)
+                        .whereArgs("stationId = {stationId}", "stationId" to stationId.toString())
+                        .exec { parseSingle<BookMark>(classParser()) }
+            }
+        }
+
+        private fun setFavIcon(active: Int) {
+            when(active) {
+                0 -> itemView.favBtn.image = itemView.context.getDrawable(R.drawable.ic_favorite_border)
+                1 -> itemView.favBtn.image = itemView.context.getDrawable(R.drawable.ic_favorite)
             }
         }
 

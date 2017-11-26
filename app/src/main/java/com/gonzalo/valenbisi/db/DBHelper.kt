@@ -32,8 +32,6 @@ class DBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "ValenbisiDB", null,
                 BookMark.COLUMN_STATION_ID to TEXT,
                 BookMark.COLUMN_NAME to TEXT,
                 BookMark.COLUMN_ACTIVE to INTEGER)
-        //Adding bookmarks.
-        initBookMarks(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, old: Int, newV: Int) {
@@ -44,35 +42,4 @@ class DBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "ValenbisiDB", null,
     val Context.database: DBHelper?
         get() = getInstance(applicationContext)
 
-
-    private fun initBookMarks(db: SQLiteDatabase?) {
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://api.citybik.es/v2/networks/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-        val stations = retrofit.create(StationService::class.java)
-
-        val call = stations.getStations()
-
-        call.enqueue(object : Callback<ResponseStations> {
-            override fun onResponse(call: Call<ResponseStations>?, response: Response<ResponseStations>?) {
-                if (response?.code() == 200) {
-                    response.body()?.network?.stations?.forEach {
-                        with(it) {
-                            db?.insert(BookMark.TABLE_NAME,
-                                    BookMark.COLUMN_STATION_ID to it?.id,
-                                    BookMark.COLUMN_NAME to it?.name,
-                                    BookMark.COLUMN_ACTIVE to 0
-                            )
-                        }
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseStations>?, t: Throwable?) {
-                //TODO: Implement on error call.
-            }
-        })
-    }
 }
