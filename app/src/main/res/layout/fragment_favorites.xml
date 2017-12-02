@@ -2,12 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.gonzalo.valenbisi.fragments.FavoritesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcViewFavorites"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Favorites" />
+        android:layout_height="wrap_content"
+        app:behavior_overlapTop="30dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </FrameLayout>
