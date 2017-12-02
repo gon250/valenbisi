@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,55 +13,134 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <TextView
-                android:id="@+id/txtStationName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:transitionName="transitionTitle"
-                tools:text="Name" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtStationDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:transitionName="transitionDesc"
-                tools:text="0.00 m" />
+                <TextView
+                    android:id="@+id/txtStationName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="Name" />
 
-            <TextView
-                android:id="@+id/txtStationBikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:transitionName="transitionDesc"
-                tools:text="12" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txtStationSlots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:transitionName="transitionDesc"
-                tools:text="22" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:scaleType="fitXY"
+                        android:tint="@color/colorPrimary"
+                        app:srcCompat="@drawable/ic_location_on" />
 
-            <TextView
-                android:id="@+id/txtStationDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/colorAccent"
-                android:transitionName="transitionPrice"
-                tools:text="Date" />
+                    <TextView
+                        android:id="@+id/txtStationDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/imageView2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textSize="18sp"
+                        tools:text="0.00 m" />
 
-            <ImageButton
-                android:id="@+id/favBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:tint="@color/colorAccent"
-                android:backgroundTint="@color/white"
-                android:src="@drawable/ic_favorite_border" />
+                    <ImageView
+                        android:id="@+id/imageBikeIco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="4dp"
+                        android:layout_toStartOf="@+id/txtStationSlots"
+                        android:cropToPadding="false"
+                        android:scaleType="fitXY"
+                        android:tint="@color/colorPrimary"
+                        app:srcCompat="@drawable/ic_directions_bike" />
+
+                    <TextView
+                        android:id="@+id/txtStationSlots"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="31dp"
+                        android:layout_toStartOf="@+id/txtStationBikes"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textSize="18sp"
+                        tools:text="22" />
+
+                    <ImageView
+                        android:id="@+id/imageSlotIco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_centerVertical="true"
+                        android:cropToPadding="false"
+                        android:scaleType="fitXY"
+                        android:tint="@color/colorPrimary"
+                        android:layout_toStartOf="@+id/txtStationBikes"
+                        app:srcCompat="@drawable/ic_border_clear" />
+
+                    <TextView
+                        android:id="@+id/txtStationBikes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textSize="18sp"
+                        tools:text="12" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/favBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/viewBtn"
+                        android:backgroundTint="@color/white"
+                        android:src="@drawable/ic_favorite_border"
+                        android:tint="@color/colorAccent" />
+
+                    <ImageButton
+                        android:id="@+id/viewBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:backgroundTint="@color/white"
+                        android:src="@drawable/ic_remove_red_eye"
+                        android:tint="@color/colorAccent" />
+
+                    <TextView
+                        android:id="@+id/txtStationDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textSize="18sp"
+                        tools:text="00:00" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
