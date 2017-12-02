@@ -18,14 +18,12 @@ class AdapterStation(val data: List<Station?>?) : RecyclerView.Adapter<AdapterSt
             Holder(parent?.inflate(R.layout.item_station))
 
     override fun onBindViewHolder(holder: Holder?, position: Int) {
-        data?.let {
+            data?.let {
             holder?.bindView(it[position])
         }
     }
 
-    override fun getItemCount(): Int {
-        return data?.size ?: 0
-    }
+    override fun getItemCount(): Int = data?.size ?: 0
 
     class Holder(itemView: View?) :  RecyclerView.ViewHolder(itemView) {
         fun bindView(station: Station?) {

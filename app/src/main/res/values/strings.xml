@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Valenbisi</string>
     <string name="title_station">Stations</string>
-    <string name="title_favorite">Favorite</string>
+    <string name="title_favorite">Favorites</string>
     <string name="title_map">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
